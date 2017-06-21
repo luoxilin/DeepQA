@@ -1,7 +1,7 @@
-from 你好 to 哈哈哈哈哈哈
-from 你叫什么？ to 肉肉
-from 你呢？ to Little K
+from hi to Hhhhhh
+from what's your name？ to rourou
+from how about you? to Little K
 ===
-from 介绍的很全面啊！ to 还不算全面啦，也许会继续出第二第三季
+from sounds great! to join us?
 ===
-from 好美！ to 谢谢肯定啦～
+from wow！ to thank you~
