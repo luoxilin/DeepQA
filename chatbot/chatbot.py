@@ -441,6 +441,7 @@ class Chatbot:
 
         # PCA Decomposition to reduce word2vec dimensionality
         if self.args.embeddingSize < vector_size:
+            print('---vector_size:', vector_size)
             U, s, Vt = np.linalg.svd(initW, full_matrices=False)
             S = np.zeros((vector_size, vector_size), dtype=complex)
             S[:vector_size, :vector_size] = np.diag(s)
