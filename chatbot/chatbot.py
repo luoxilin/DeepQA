@@ -256,7 +256,7 @@ class Chatbot:
 
                     # Output training status
                     if self.globStep % 100 == 0:
-                        perplexity = math.exp(float(loss)) if loss < 300 else float("inf")
+                        perplexity = math.exp(float(loss)) if loss < 2 else float("inf")
                         tqdm.write("----- Step %d -- Loss %.2f -- Perplexity %.2f" % (self.globStep, loss, perplexity))
 
                     # Checkpoint
