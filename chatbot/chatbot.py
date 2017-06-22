@@ -411,7 +411,7 @@ class Chatbot:
         print("Loading pre-trained word embeddings from %s " % embeddings_path)
         with open(embeddings_path, "rb") as f:
             header = f.readline()
-            print('---header', header)
+            print('---embeddings_path', embeddings_path)
             vocab_size, vector_size = map(int, header.split())
             binary_len = np.dtype('float32').itemsize * vector_size
             initW = np.random.uniform(-0.25,0.25,(len(self.textData.word2id), vector_size))
