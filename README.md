@@ -1,10 +1,9 @@
-# Deep Q&A
-[![Join the chat at https://gitter.im/chatbot-pilots/DeepQA](https://badges.gitter.im/chatbot-pilots/DeepQA.svg)](https://gitter.im/chatbot-pilots/DeepQA?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Deep Q&A for Chinese
 
 #### Table of Contents
 
 * [Presentation](#presentation)
-* [Installation](#installation)
+* [配置环境](#配置环境)
 * [Running](#running)
     * [Chatbot](#chatbot)
     * [Web interface](#web-interface)
@@ -13,22 +12,23 @@
 * [Improvements](#improvements)
 * [Upgrade](#upgrade)
 
-## Presentation
+## 配置环境
 
-This work tries to reproduce the results of [A Neural Conversational Model](http://arxiv.org/abs/1506.05869) (aka the Google chatbot). It uses a RNN (seq2seq model) for sentence predictions. It is done using python and TensorFlow.
+### 安装运行必须需要的模块：
+ * pip3 install tqdm
+ * pip3 install numpy
+ * pip3 install CUDA (看需求安装：如果是GPU的版本则需要安装)
+ * pip3 install nltk (需要进行nltk的download操作)
+ * python3 -m nltk.downloader punkt（用于句子分割）
+ * pip3 install tensorflow==1.0
+ * sudo apt-get install python3.5-gdbm
 
-The loading corpus part of the program is inspired by the Torch [neuralconvo](https://github.com/macournoyer/neuralconvo) from [macournoyer](https://github.com/macournoyer).
-
-For now, DeepQA support the following dialog corpus:
- * [Cornell Movie Dialogs](http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html) corpus (default). Already included when cloning the repository.
- * [OpenSubtitles](http://opus.lingfil.uu.se/OpenSubtitles.php) (thanks to [Eschnou](https://github.com/eschnou)). Much bigger corpus (but also noisier). To use it, follow [those instructions](data/opensubs/) and use the flag `--corpus opensubs`.
- * Supreme Court Conversation Data (thanks to [julien-c](https://github.com/julien-c)). Available using `--corpus scotus`. See the [instructions](data/scotus/) for installation.
- * [Ubuntu Dialogue Corpus](https://arxiv.org/abs/1506.08909) (thanks to [julien-c](https://github.com/julien-c)). Available using `--corpus ubuntu`. See the [instructions](data/ubuntu/) for installation.
- * Your own data (thanks to [julien-c](https://github.com/julien-c)) by using a simple custom conversation format (See [here](data/lightweight) for more info).
-
-To speedup the training, it's also possible to use pre-trained word embeddings (thanks to [Eschnou](https://github.com/eschnou)). More info [here](data/embeddings).
-
-## Installation
+ ### 安装web interface需要的模块：
+ * pip3 install Django==1.10
+ * pip3 install incremental
+ * pip3 install channels
+ * pip3 install redis
+ * pip3 install asgi_redis
 
 The program requires the following dependencies (easy to install using pip):
  * python 3.5
@@ -53,6 +53,23 @@ The web interface requires some additional packages:
  * asgi_redis (at least 1.0)
 
 A Docker installation is also available. More detailed instructions [here](docker/README.md).
+
+## Presentation
+
+This work tries to reproduce the results of [A Neural Conversational Model](http://arxiv.org/abs/1506.05869) (aka the Google chatbot). It uses a RNN (seq2seq model) for sentence predictions. It is done using python and TensorFlow.
+
+The loading corpus part of the program is inspired by the Torch [neuralconvo](https://github.com/macournoyer/neuralconvo) from [macournoyer](https://github.com/macournoyer).
+
+For now, DeepQA support the following dialog corpus:
+ * [Cornell Movie Dialogs](http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html) corpus (default). Already included when cloning the repository.
+ * [OpenSubtitles](http://opus.lingfil.uu.se/OpenSubtitles.php) (thanks to [Eschnou](https://github.com/eschnou)). Much bigger corpus (but also noisier). To use it, follow [those instructions](data/opensubs/) and use the flag `--corpus opensubs`.
+ * Supreme Court Conversation Data (thanks to [julien-c](https://github.com/julien-c)). Available using `--corpus scotus`. See the [instructions](data/scotus/) for installation.
+ * [Ubuntu Dialogue Corpus](https://arxiv.org/abs/1506.08909) (thanks to [julien-c](https://github.com/julien-c)). Available using `--corpus ubuntu`. See the [instructions](data/ubuntu/) for installation.
+ * Your own data (thanks to [julien-c](https://github.com/julien-c)) by using a simple custom conversation format (See [here](data/lightweight) for more info).
+
+To speedup the training, it's also possible to use pre-trained word embeddings (thanks to [Eschnou](https://github.com/eschnou)). More info [here](data/embeddings).
+
+
 
 ## Running
 
