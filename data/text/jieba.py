@@ -15,13 +15,13 @@ with open(filePath) as fileTrainRaw:
 # define this function to print a list with Chinese
 def PrintListChinese(list):
     for i in range(len(list)):
-        print list[i],
+        print (list[i]),
 # segment word with jieba
 fileTrainSeg=[]
 for i in range(len(fileTrainRead)):
     fileTrainSeg.append(jieba.cut(fileTrainRead[i], cut_all=False))
     if i % 100 == 0 :
-        print i
+        print (i)
 
 # to test the segment result
 #PrintListChinese(fileTrainSeg[10])
