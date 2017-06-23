@@ -1,8 +1,8 @@
 # encoding=utf-8
 import jieba
 
-filePath='content.txt'
-fileSegWordDonePath ='contentSegDone.txt'
+filePath='/home/tutumeimei1023/DeepQA2/data/text/content.txt'
+fileSegWordDonePath ='/home/tutumeimei1023/DeepQA2/data/text/contentSegDone.txt'
 # read the file by line
 fileTrainRead = []
 #fileTestRead = []
@@ -18,7 +18,8 @@ def PrintListChinese(list):
 # segment word with jieba
 fileTrainSeg=[]
 for i in range(len(fileTrainRead)):
-    fileTrainSeg.append(jieba.cut(fileTrainRead[i], cut_all=False))
+    line = jieba.cut(fileTrainRead[i], cut_all=False)
+    fileTrainSeg.append(line)
     if i % 100 == 0 :
         print (i)
 
