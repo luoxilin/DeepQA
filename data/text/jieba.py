@@ -1,6 +1,4 @@
 import sys
-sys.path.append('../')
-
 import jieba
 import jieba.analyse
 from optparse import OptionParser
