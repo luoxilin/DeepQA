@@ -1,33 +1,30 @@
-# encoding=utf-8
+import sys
+sys.path.append('../')
+
 import jieba
+import jieba.analyse
+from optparse import OptionParser
 
-filePath='/home/tutumeimei1023/DeepQA2/data/text/content.txt'
-fileSegWordDonePath ='/home/tutumeimei1023/DeepQA2/data/text/contentSegDone.txt'
-# read the file by line
-fileTrainRead = []
-#fileTestRead = []
-with open(filePath) as fileTrainRaw:
-    for line in fileTrainRaw:
-        fileTrainRead.append(line)
+USAGE = "usage:    python extract_tags.py [file name] -k [top k]"
+
+parser = OptionParser(USAGE)
+parser.add_option("-k", dest="topK")
+opt, args = parser.parse_args()
 
 
-# define this function to print a list with Chinese
-def PrintListChinese(list):
-    for i in range(len(list)):
-        print (list[i]),
-# segment word with jieba
-fileTrainSeg=[]
-for i in range(len(fileTrainRead)):
-    line = jieba.cut(fileTrainRead[i], cut_all=False)
-    fileTrainSeg.append(line)
-    if i % 100 == 0 :
-        print (i)
+if len(args) < 1:
+    print(USAGE)
+    sys.exit(1)
 
-# to test the segment result
-#PrintListChinese(fileTrainSeg[10])
+file_name = args[0]
 
-# save the result
-with open(fileSegWordDonePath,'wb') as fW:
-    for i in range(len(fileTrainSeg)):
-        fW.write(fileTrainSeg[i][0].encode('utf-8'))
-        fW.write('\n')
+if opt.topK is None:
+    topK = 10
+else:
+    topK = int(opt.topK)
+
+content = open(file_name, 'rb').read()
+
+tags = jieba.analyse.extract_tags(content, topK=topK)
+
+print(",".join(tags))
