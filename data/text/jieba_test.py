@@ -1,8 +1,8 @@
 import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),os.path.pardir)))
-import jieba_test
-import jieba_test.analyse
+# import os
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),os.path.pardir)))
+import jieba
+import jieba.analyse
 from optparse import OptionParser
 
 USAGE = "usage:    python extract_tags.py [file name] -k [top k]"
