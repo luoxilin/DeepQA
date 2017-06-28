@@ -1,8 +1,8 @@
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),os.path.pardir)))
-import jieba
-import jieba.analyse
+import jieba_test
+import jieba_test.analyse
 from optparse import OptionParser
 
 USAGE = "usage:    python extract_tags.py [file name] -k [top k]"
@@ -26,7 +26,7 @@ else:
 
 content = open(file_name, 'rb').read()
 
-tags = jieba.analyse.extract_tags(content, topK=topK)
+tags = jieba_test.analyse.extract_tags(content, topK=topK)
 
 f1 = open('/home/tutumeimei1023/DeepQA2/data/text/content_new.txt', 'w')
 for tag in tags:
