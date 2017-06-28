@@ -1,5 +1,6 @@
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),os.path.pardir
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),os.path.pardir)))
 import jieba
 import jieba.analyse
 from optparse import OptionParser
